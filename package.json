@@ -1,0 +1,22 @@
+{
+  "name": "leisure-vihang",
+  "version": "1.0.0",
+  "description": "Leisure Vihang - Travel booking website with AI chatbot",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site - no build needed'",
+    "start": "vercel start"
+  },
+  "keywords": [
+    "travel",
+    "booking",
+    "tourism",
+    "ai-chatbot"
+  ],
+  "author": "Leisure Vihang",
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "^latest"
+  }
+}
