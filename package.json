@@ -4,9 +4,9 @@
   "description": "Leisure Vihang - Travel booking website with AI chatbot",
   "main": "index.html",
   "scripts": {
-    "dev": "vercel dev",
+    "dev": "echo 'Static site - run with: python -m http.server 8000'",
     "build": "echo 'Static site - no build needed'",
-    "start": "vercel start"
+    "start": "echo 'Static site - run with: python -m http.server 8000'"
   },
   "keywords": [
     "travel",
@@ -15,8 +15,5 @@
     "ai-chatbot"
   ],
   "author": "Leisure Vihang",
-  "license": "MIT",
-  "devDependencies": {
-    "vercel": "^latest"
-  }
+  "license": "MIT"
 }
