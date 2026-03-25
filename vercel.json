@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "public": true,
   "builds": [
     {
       "src": "api/**/*.js",
@@ -12,8 +13,8 @@
       "dest": "/api/$1"
     },
     {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "src": "/.*",
+      "dest": "/index.html"
     }
   ]
 }
