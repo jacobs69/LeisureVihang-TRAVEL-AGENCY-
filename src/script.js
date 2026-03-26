@@ -1,10 +1,10 @@
-// AI Chat Bot Functions
-function toggleChat() {
+// AI Chat Bot Functions - Exposed to global scope
+window.toggleChat = function() {
   const w = document.getElementById('chatWindow');
   w.classList.toggle('open');
 }
 
-function openChat(trip) {
+window.openChat = function(trip) {
   const w = document.getElementById('chatWindow');
   w.classList.add('open');
   w.scrollIntoView({ behavior: 'smooth', block: 'end' });
@@ -36,7 +36,7 @@ const botReplies = {
   'default': "Thanks for reaching out! 😊 Our travel experts will contact you very soon. Or you can WhatsApp us directly at +91 98765 43210 for instant replies!"
 };
 
-function quickReply(text) {
+window.quickReply = function(text) {
   document.getElementById('chatOptions').style.display = 'none';
   addMsg(text, 'user');
   const key = text.toLowerCase();
@@ -46,7 +46,7 @@ function quickReply(text) {
   }, 700);
 }
 
-function sendChat() {
+window.sendChat = function() {
   const inp = document.getElementById('chatInput');
   const txt = inp.value.trim();
   if (!txt) return;
@@ -82,7 +82,7 @@ function sendChat() {
 }
 
 // Form Submission
-function submitForm() {
+window.submitForm = function() {
   const name = document.getElementById('fname').value;
   const phone = document.getElementById('fphone').value;
   const type = document.getElementById('ftype').value;
@@ -92,54 +92,24 @@ function submitForm() {
     return;
   }
 
-  // Prepare form data
-  const formData = {
-    name: name,
-    phone: phone,
-    email: document.getElementById('femail').value,
-    tripType: type,
-    destination: document.getElementById('fdest').value,
-    groupSize: document.getElementById('fsize').value,
-    departureDate: document.getElementById('fdate').value,
-    budget: document.getElementById('fbudget').value,
-    specialRequirements: document.getElementById('fnotes').value,
-    timestamp: new Date().toISOString()
-  };
-
-  // Send to backend API
-  fetch('/api/submit-enquiry', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData)
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-      document.getElementById('formContent').style.display = 'none';
-      document.getElementById('successMsg').style.display = 'block';
-      
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        document.getElementById('fname').value = '';
-        document.getElementById('fphone').value = '';
-        document.getElementById('femail').value = '';
-        document.getElementById('ftype').value = '';
-        document.getElementById('fdest').value = '';
-        document.getElementById('fsize').value = '';
-        document.getElementById('fdate').value = '';
-        document.getElementById('fbudget').value = '';
-        document.getElementById('fnotes').value = '';
-        document.getElementById('formContent').style.display = 'block';
-        document.getElementById('successMsg').style.display = 'none';
-      }, 3000);
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    alert('There was an error submitting your enquiry. Please try again.');
-  });
+  // Show success message directly (no backend needed for now)
+  document.getElementById('formContent').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+  
+  // Reset form after 3 seconds
+  setTimeout(() => {
+    document.getElementById('fname').value = '';
+    document.getElementById('fphone').value = '';
+    document.getElementById('femail').value = '';
+    document.getElementById('ftype').value = '';
+    document.getElementById('fdest').value = '';
+    document.getElementById('fsize').value = '';
+    document.getElementById('fdate').value = '';
+    document.getElementById('fbudget').value = '';
+    document.getElementById('fnotes').value = '';
+    document.getElementById('formContent').style.display = 'block';
+    document.getElementById('successMsg').style.display = 'none';
+  }, 3000);
 }
 
 // Smooth scroll for navigation
